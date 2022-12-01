@@ -1,11 +1,15 @@
-{% extends "layout.html" %}
+{% extends "layout_intro.html" %}
 
 {% block title %}
     Log In
 {% endblock %}
 
-{% block main %}
-    <form action="/login" method="post">
+{% block placeholder %}
+<h1 class="mb-3 fw-semibold" id="title">Ballet Folklórico Mexicano de Yale</h1>
+<h3>Admin Site</h3>
+<p>Inventory, members, finances. One place to track everything. Log in or set up an account below!</p>
+<div class="text-center mt-5">
+    <form action="/login" method="post" class="mb-2">
         <div class="mb-3">
             <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="username" name="username" placeholder="Username" type="text">
         </div>
@@ -14,4 +18,7 @@
         </div>
         <button class="btn btn-primary" type="submit">Log In</button>
     </form>
+    <a href="/register" class="link-secondary">Register</a>
+</div>
+
 {% endblock %}

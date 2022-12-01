@@ -1,20 +1,23 @@
-{% extends "layout.html" %}
+{% extends "layout_intro.html" %}
 
 {% block title %}
     Register
 {% endblock %}
 
-{% block main %}
-    <form action="/register" method="post">
+{% block placeholder %}
+<h1 class="mb-3 fw-semibold" id="title">Register</h1>
+<p>*If you're an active BF member without an account, you can optionally choose your name from the dropdown menu.</p>
+<div class="text-center mt-5">
+    <form action="/login" method="post" class="mb-2">
         <div class="mb-3">
             <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="username" name="username" placeholder="Username" type="text">
         </div>
         <div class="mb-3">
             <input class="form-control mx-auto w-auto" id="password" name="password" placeholder="Password" type="password">
         </div>
-        <div class="mb-3">
-            <input class="form-control mx-auto w-auto" id="confirmation" name="confirmation" placeholder="Confirm Password" type="password">
-        </div>
-        <button class="btn btn-primary" type="submit">Register</button>
+        <button class="btn btn-primary" type="submit">Log In</button>
     </form>
+    <a href="/register" class="link-secondary">Register</a>
+</div>
+
 {% endblock %}
