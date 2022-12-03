@@ -25,10 +25,18 @@ def after_request(response):
     return response
 
 
+
+
+
+
 @app.route("/")
 @login_required
 def index():
     return apology("building")
+
+
+
+
 
 
 
@@ -147,6 +155,9 @@ def register():
     
 
 
+
+
+
 @app.route("/members")
 def members():
         
@@ -178,9 +189,8 @@ def add_member():
         college = request.form.get("college")
         year = request.form.get("year")
         active = request.form.get("active")
-        board = request.form.get("board")
         
-        db.execute("INSERT INTO members (name, college, year, active, board) VALUES (?, ?, ?, ?, ?)", name, college, year, active, board)
+        db.execute("INSERT INTO members (name, college, year, active, board) VALUES (?, ?, ?, ?, 0)", name, college, year, active)
         
         return redirect("/members")
     
@@ -201,8 +211,8 @@ def edit_member():
         return redirect('/members')
 
 
-@app.route("/editing", methods=["GET", "POST"])
-def editing():
+@app.route("/editing_member", methods=["GET", "POST"])
+def editing_member():
     template = 'edit_member.html'
     colleges = ['JE', 'BR', 'SY', 'PC', 'DC', 'GH', 'BK', 'TC', 'ES', 'MC', 'TD', 'SM', 'BF', 'MY']
     
@@ -218,12 +228,8 @@ def editing():
         college = request.form.get("college")
         year = request.form.get("year")
         active = request.form.get("active")
-        board = request.form.get("board")
         
-        db.execute("UPDATE members SET name = ?, college = ?, year = ?, active = ?, board = ? WHERE id = ?", name, college, year, active, board, member_id)
-        
-        return redirect('/members')
-        
+        db.execute("UPDATE members SET name = ?, college = ?, year = ?, active = ? WHERE id = ?", name, college, year, active, member_id)        
     
     return redirect('/members')
 
@@ -249,9 +255,85 @@ def delete_member():
 
 
 
-@app.route("/board", methods=["GET", "POST"])
+@app.route("/board")
 def board():
-    return apology("building")
+    template = 'board_list.html'
+    board = db.execute('SELECT member_id, name, position FROM board JOIN members ON board.member_id = members.id')
+    return render_template(template, board=board)
+
+
+
+@app.route("/add_board", methods=["GET", "POST"])
+def add_board():
+    
+    template = 'add_board.html'
+    members = db.execute("SELECT name, id FROM members WHERE id NOT IN (SELECT member_id FROM board JOIN members ON board.member_id = members.id)")
+    
+    if request.method == 'POST':
+        
+        member_id = request.form.get('member')
+        position = request.form.get('position')
+        
+        if not member_id:
+            flash('Choose a new board member')
+            return render_template(template, members=members)
+        
+        elif not position:
+            flash('Type a board position')
+            return render_template(template, members=members)
+        
+        db.execute("INSERT INTO board (member_id, position) VALUES (?, ?)", member_id, position)
+        
+        return redirect('/board')
+    else:
+        
+        return render_template(template, members=members)
+
+
+@app.route("/delete_board", methods=["GET", "POST"])
+def delete_board():
+    
+    if request.method == 'POST':
+        member_id = request.form.get("member_id")
+        print(member_id)
+        db.execute("DELETE FROM board WHERE member_id = ?", member_id)
+    
+    return redirect('/board')
+
+
+@app.route("/edit_board", methods=["GET", "POST"])
+def edit_board():
+    
+    template = 'edit_board.html'
+    
+    if request.method == 'POST':
+        member_id = request.form.get("member_id")
+        person = db.execute("SELECT name, position, member_id FROM board JOIN members ON board.member_id = members.id WHERE member_id = ?", member_id)[0]
+        return render_template(template, person=person)
+    else:
+        return redirect('/board')
+
+
+
+@app.route("/editing_board", methods=["GET", "POST"])
+def editing_board():
+    template = 'edit_board.html'
+    
+    if request.method == 'POST':
+        member_id = request.form.get("member_id")
+        print(member_id)
+        position = request.form.get('position')
+        
+        if not position:
+            flash('Type a board position')
+            person = db.execute("SELECT name, position, member_id FROM board JOIN members ON board.member_id = members.id WHERE member_id = ?", member_id)[0]
+            return render_template(template, person=person)
+        
+        db.execute("UPDATE board SET position = ? WHERE member_id = ?", position, member_id)
+        
+    return redirect('/board')
+
+
 
 @app.route("/site_accounts", methods=["GET", "POST"])
 def site_accounts():

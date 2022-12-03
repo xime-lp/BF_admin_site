@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title%}
+Add Board Member
+{% endblock %}
+
+{% block main %}
+<div class="container mt-3">
+    <h1 class="text-left fw-semibold">New board member</h1>
+    <form action="/add_board" method="post">
+        <div class="row mb-3">
+            <div class="col-3">
+                <label for="member" class="form-label">Member</label>
+                <select name="member" id="member" class="form-control form-select">
+                    <option disabled selected>Member</option>
+                    {% for member in members %}
+                        <option value="{{ member.id }}">{{ member.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-3">
+                <label for="position" class="form-label">Position</label>
+                <input autocomplete="off" class="form-control" id="position" name="position" placeholder="position" type="text">
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Add</button>
+        <a href="/board"><button type="button" class="btn btn-danger">Cancel</button></a>
+    </form>
+</div>
+{% endblock %}

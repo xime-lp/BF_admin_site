@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title%}
+Edit Board Member
+{% endblock %}
+
+{% block main %}
+<div class="container mt-3">
+    <h1 class="text-left fw-semibold">Edit board member</h1>
+    <form action="/editing_board" method="post">
+        <input name='member_id' value="{{ person.member_id }}" hidden>
+        <div class="row mb-3">
+            <div class="col-3">
+                <label for="member" class="form-label">Member</label>
+                <select name="member" id="member" class="form-select" aria-label="Disabled select example" disabled>
+                    <option selected>{{ person.name }}</option>
+                </select>
+            </div>
+            <div class="col-3">
+                <label for="position" class="form-label">Position</label>
+                <input autocomplete="off" class="form-control" id="position" name="position" placeholder="position" type="text" value="{{person.position}}">
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Save</button>
+        <a href="/board"><button type="button" class="btn btn-danger">Cancel</button></a>
+    </form>
+</div>
+{% endblock %}

@@ -1,40 +1,36 @@
 {% extends "layout.html" %}
 
 {% block title%}
-Members
+Board
 {% endblock %}
 
 {% block main %}
 <div class="container mt-3">
-    <h1 class="text-left fw-semibold">Group members</h1>
+    <h1 class="text-left fw-semibold">Group board</h1>
     <div class="table-responsive">
         <table class="table table-striped" aria-label="member table">
             <thead>
                 <tr>
-                    <th scope="col" class="col-4">Name</th>
-                    <th scope="col">College</th>
-                    <th scope="col">Year</th>
-                    <th scope="col">Active</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Position</th>
                     <th scope="col" class="col-1"></th>
                     <th scope="col" class="col-1"></th>
                 </tr>
             </thead>
             <tbody>
-                {% for member in members %}
+                {% for member in board %}
                 <tr>
                     <td>{{ member.name }}</td>
-                    <td>{{ member.college }}</td>
-                    <td>{{ member.year }}</td>
-                    <td>{{ member.active }}</td>
+                    <td>{{ member.position }}</td>
                     <td>
-                        <form action="/edit_member" method="post">
-                            <input name='member_id' value="{{ member.id }}" hidden>
+                        <form action="/edit_board" method="post">
+                            <input name='member_id' value="{{ member.member_id }}" hidden>
                             <button class="btn btn-primary" type="submit">Edit</button>
                         </form>
                     </td>
                     <td>
-                        <form action="/delete_member" method="post">
-                            <input name='member_id' value="{{ member.id }}" hidden>
+                        <form action="/delete_board" method="post">
+                            <input name='member_id' value="{{ member.member_id }}" hidden>
                             <button class="btn btn-danger" type="submit">Delete</button>
                         </form>
                     </td>
@@ -44,7 +40,7 @@ Members
         </table>
     </div>
 
-    <a href="/add_member"><button class="btn btn-primary" type="submit">Add Member</button></a>
+    <a href="/add_board"><button class="btn btn-primary" type="submit">Add Board Member</button></a> 
 </div>
 
 

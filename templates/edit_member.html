@@ -7,7 +7,7 @@ Edit Member
 {% block main %}
 <div class="container mt-3">
     <h1 class="text-left fw-semibold">Edit member</h1>
-    <form action="/editing" method="post">
+    <form action="/editing_member" method="post">
         <input name='member_id' value="{{ member.id }}" hidden>
         <div class="row mb-3">
             <div class="col-4">
@@ -30,18 +30,6 @@ Edit Member
             <div class="col-2">
                 <label for="year" class="form-label">Year</label>
                 <input autocomplete="off" class="form-control" id="year" name="year" placeholder="Year" type="text" value="{{member.year}}">
-            </div>
-            <div class="col-2">
-                <label for="board" class="form-label">Board</label>
-                <select name="board" id="board" class="form-control form-select">
-                    {% if member.board %}
-                        <option selected value="True">Yes</option>
-                        <option value="False">No</option>
-                    {% else %}
-                        <option value="True">Yes</option>
-                        <option selected value="False">No</option>
-                    {% endif %}
-                </select>
             </div>
             <div class="col-2">
                 <label for="active" class="form-label">Active</label>
