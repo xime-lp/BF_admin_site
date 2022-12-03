@@ -39,36 +39,34 @@
                                 People
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Members</a></li>
-                                <li><a class="dropdown-item" href="#">Board</a></li>
-                                {% if major_admin%}<li><a class="dropdown-item" href="#">Accounts</a></li>{% endif %}
+                                <li><a class="dropdown-item" href="/members">Members</a></li>
+                                <li><a class="dropdown-item" href="/board">Board</a></li>
+                                <li><a class="dropdown-item" href="/site_accounts">Accounts</a></li>
                                 </ul>
                             </li>
-                            {% if major_admin%}
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Finances
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Purchases</a></li>
-                                <li><a class="dropdown-item" href="#">Earnings</a></li>
-                                <li><a class="dropdown-item" href="#">Analytics</a></li>
+                                <li><a class="dropdown-item" href="/purchases">Purchases</a></li>
+                                <li><a class="dropdown-item" href="/earnings">Earnings</a></li>
+                                <li><a class="dropdown-item" href="/finance_analytics">Analytics</a></li>
                                 </ul>
                             </li>
-                            {% endif %}
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Inventory
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Shoes</a></li>
-                                <li><a class="dropdown-item" href="#">Customes</a></li>
+                                <li><a class="dropdown-item" href="/shoes">Shoes</a></li>
+                                <li><a class="dropdown-item" href="/costumes">Customes</a></li>
                                 </ul>
                             </li>
                         </ul>
                         <ul class="navbar-nav ms-auto mt-2">
                             <li class="nav-item">
-                                <a class="nav-link active" href="#">Profile</a>
+                                <a class="nav-link active" href="/profile">Profile</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" href="/logout">Log Out</a>
@@ -96,11 +94,11 @@
             </header>
         {% endif %}
 
-        <main class="pb-5 bd-main order-1">
+        <main class="pb-3 bd-main order-1">
             {% block main %}{% endblock %}
         </main>
 
-        <footer class="bd-footer py-2 mt-2 small container-fluid bg-light">
+        <footer class="bd-footer py-2 mt-2 small container-fluid bg-light text-center">
             <div class="py-1">
                     Built by <a href="https://www.linkedin.com/in/ximena-leyva-peralta-31561013a/" target="_blank" class="link-secondary">Ximena Leyva</a> for <a href="https://cs50.yale.edu/2022/fall/" target="_blank" class="link-secondary">Yale's CS50 Fall 2022</a>.
                     More about Ballet Folklórico de Yale <a href="https://www.instagram.com/yalefolklorico/" target="_blank" class="link-secondary">here</a>.

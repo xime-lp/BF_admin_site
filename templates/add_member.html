@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title%}
+New Member
+{% endblock %}
+
+{% block main %}
+<div class="container mt-3">
+    <h1 class="text-left fw-semibold">New member</h1>
+    <form action="/add_member" method="post">
+        <div class="row mb-3">
+            <div class="col-4">
+                <label for="name" class="form-label">Name</label>
+                <input autocomplete="off" autofocus class="form-control" id="name" name="name" placeholder="Name" type="text">
+            </div>
+            <div class="col-2">
+                <label for="college" class="form-label">College</label>
+                <select name="college" id="college" class="form-control form-select">
+                    <option disabled selected>College</option>
+                    <option value="-">None</option>
+                    {% for college in colleges %}
+                    <option value="{{ college }}">{{ college }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-2">
+                <label for="year" class="form-label">Year</label>
+                <input autocomplete="off" class="form-control" id="year" name="year" placeholder="Year" type="text">
+            </div>
+            <div class="col-2">
+                <label for="board" class="form-label">Board</label>
+                <select name="board" id="board" class="form-control form-select">
+                    <option value="True">Yes</option>
+                    <option selected value="False">No</option>
+                </select>
+            </div>
+            <div class="col-2">
+                <label for="active" class="form-label">Active</label>
+                <select name="active" id="active" class="form-control form-select">
+                    <option selected value="True">Yes</option>
+                    <option value="False">No</option>
+                </select>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Add</button>
+        <a href="/members"><button type="button" class="btn btn-danger">Cancel</button></a>
+    </form>
+</div>
+{% endblock %}
