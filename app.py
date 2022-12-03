@@ -295,7 +295,6 @@ def delete_board():
     
     if request.method == 'POST':
         member_id = request.form.get("member_id")
-        print(member_id)
         db.execute("DELETE FROM board WHERE member_id = ?", member_id)
     
     return redirect('/board')
@@ -335,9 +334,30 @@ def editing_board():
 
 
 
-@app.route("/site_accounts", methods=["GET", "POST"])
+
+
+@app.route("/site_accounts")
 def site_accounts():
-    return apology("building")
+    accounts = db.execute("SELECT id, username, member_id FROM users")
+    for account in accounts:
+        if account['member_id']:
+            name = db.execute("SELECT name FROM members WHERE id = ?", account['member_id'])[0]['name']
+            account['name'] = name
+        else:
+            account['name'] = '-'
+    return render_template('site_accounts.html', accounts=accounts)
+
+
+
+@app.route("/delete_account", methods=["GET", "POST"])
+def delete_account():
+    if request.method == 'POST':
+        account_id = request.form.get('id')
+        db.execute("DELETE FROM users WHERE id = ?", account_id)
+    return redirect('/site_accounts')
+    
+
+
 
 @app.route("/purchases", methods=["GET", "POST"])
 def purchases():

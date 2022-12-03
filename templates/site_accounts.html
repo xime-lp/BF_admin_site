@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title%}
+Site Accounts
+{% endblock %}
+
+{% block main %}
+<div class="container mt-3">
+    <h1 class="text-left fw-semibold">Site Accounts</h1>
+    <div class="table-responsive">
+        <table class="table table-striped" aria-label="member table">
+            <thead>
+                <tr>
+                    <th scope="col">Username</th>
+                    <th scope="col">Group member</th>
+                    <th scope="col" class="col-1"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for account in accounts %}
+                <tr>
+                    <td>{{ account.username }}</td>
+                    <td>{{ account.name }}</td>
+                    <td>
+                        <form action="/delete_account" method="post">
+                            <input name='id' value="{{ account.id }}" hidden>
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+{% endblock %}
