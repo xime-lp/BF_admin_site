@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block title%}
+New Purchase
+{% endblock %}
+
+{% block main %}
+<div class="container mt-3">
+    <h1 class="text-left fw-semibold">New purchase</h1>
+    <form action="/add_purchase" method="post">
+        <div class="row mb-3">
+            <div class="col-3">
+                <label for="date" class="form-label">Date</label>
+                <input autocomplete="off" class="form-control" id="date" name="date" type="date">
+            </div>
+            <div class="col-3">
+                <label for="total" class="form-label">Total</label>
+                <input autocomplete="off" class="form-control" id="total" name="total" placeholder="0.00" type="number" step="any" min="0">
+            </div>
+            <div class="col">
+                <label for="vendor" class="form-label">Vendor</label>
+                <input autocomplete="off" class="form-control" id="vendor" name="vendor" placeholder="Vendor" type="text">
+            </div>
+        </div>
+        <div class="row mb-3"> 
+            <div class="col">
+                <label for="covered" class="form-label">Covered</label>
+                <select name="covered" id="covered" class="form-control form-select">
+                    <option selected value="True">Yes</option>
+                    <option value="False">No</option>
+                </select>
+            </div>
+        
+            <div class="col">
+                <label for="buyer_id" class="form-label">Purchased by</label>
+                <select name="buyer_id" id="buyer_id" class="form-control form-select">
+                    <option disabled selected>Member</option>
+                    {% for member in members %}
+                        <option value="{{ member.id }}">{{ member.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col">
+                <label for="payment_type" class="form-label">Payment type</label>
+                <input autocomplete="off" class="form-control" id="payment_type" name="payment_type" placeholder="Payment type" type="text">
+            </div>
+            <div class="col-6">
+                <label for="desc" class="form-label">Description</label>
+                <input autocomplete="off" class="form-control" id="desc" name="desc" placeholder="Description" type="text">
+            </div>
+            
+        </div>
+
+        <!-- BUTTON TO KEEP ADDING ITEMS TO THE PURCHASE -->
+
+
+        <button class="btn btn-primary" type="submit">Add</button>
+        <a href="/purchases"><button type="button" class="btn btn-danger">Cancel</button></a>
+    </form>
+</div>
+{% endblock %}

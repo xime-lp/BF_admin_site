@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title%}
+Purchases
+{% endblock %}
+
+{% block main %}
+<div class="container mt-3">
+    <h1 class="text-left fw-semibold">Purchases</h1>
+    <div class="table-responsive">
+        <table class="table table-striped" aria-label="member table">
+            <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Vendor</th>
+                    <th scope="col">Covered</th>
+                    <th scope="col">Purchased by</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for purchase in purchases %}
+                <tr>
+                    <td>coming soon</td>
+                    <td>{{ purchase.total }}</td>
+                    <td>{{ purchase.place }}</td>
+                    <td>{{ purchase.buyer }}</td>
+                    <td>{{ purchase.covered }}</td>
+                    <td>
+                        <form action="#" method="post">
+                            <input name='id' value="{{ purchase.id }}" hidden>
+                            <button class="btn btn-danger" type="submit">Edit</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="#" method="post">
+                            <input name='id' value="{{ purchase.id}}" hidden>
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a href="/add_purchase"><button class="btn btn-primary" type="submit">Add Purchase</button></a>
+</div>
+
+
+{% endblock %}
