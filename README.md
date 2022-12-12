@@ -22,7 +22,7 @@ The output should include the following line:
 
 Copy the http address and access it in a browser (ex. Google Chrome, Safari, etc.)
 
-> **_NOTE:_**  The program requires Python and the following libraries: [Flask](https://flask.palletsprojects.com/en/2.2.x/installation/), [CS50 Library for Python](https://cs50.readthedocs.io/libraries/cs50/python/), [Werkzeug](https://werkzeug.palletsprojects.com/en/2.2.x/installation/), [Openpyxl](https://pypi.org/project/openpyxl/) and, [Bokeh](https://docs.bokeh.org/en/latest/docs/first_steps/installation.html). Ensure they are installed and updated.
+> **_NOTE:_**  The program requires Python and the following libraries: [Flask](https://flask.palletsprojects.com/en/2.2.x/installation/), [CS50 Library for Python](https://cs50.readthedocs.io/libraries/cs50/python/), [Werkzeug](https://werkzeug.palletsprojects.com/en/2.2.x/installation/), [Openpyxl](https://pypi.org/project/openpyxl/), and [Bokeh](https://docs.bokeh.org/en/latest/docs/first_steps/installation.html). Ensure they are installed and updated.
 
 #### Online
 * Currently working on launching the application online
