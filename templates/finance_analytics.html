@@ -17,6 +17,7 @@ TESTING
 {% block main %}
 <div class="container mt-3">
     <h1 class="text-left fw-semibold">Finance Analytics</h1>
+    <p>Use the toolbox on the top right of each graph to move and zoom. You can also click on the graph to move it around.</p>
     <div class="row">
         <div class="col">
             {{ earnings_plot|indent(4)|safe }}
@@ -31,6 +32,7 @@ TESTING
 
 <div class="container mt-3">
     <h3 class="text-left fw-semibold">Download Excel file</h3>
+    <p>Click download to output a file with all purchases and earnings that have been registered OR select a date range to limit which purchases and earnings are included. If you are selecting a range, be sure to pick both a start date and an end date.</p>
     <form action="/return_excel" method="post">
         <div class="row mb-3">
             <div class="col">

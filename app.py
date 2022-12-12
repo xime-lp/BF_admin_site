@@ -12,6 +12,7 @@
         - https://flask.palletsprojects.com/en/2.2.x/patterns/flashing/
         - https://sebhastian.com/javascript-confirmation-yes-no/#:~:text=You%20can%20create%20a%20JavaScript,can%20specify%20as%20its%20argument.
         - https://getbootstrap.com/docs/5.2/getting-started/introduction/
+        - https://www.folkstalk.com/2022/10/how-to-delete-every-row-in-excel-using-openpyxl-with-code-examples.html
 '''
 
 
@@ -960,8 +961,7 @@ def update_finances_excel(start_date, end_date):
     # open a workbook and a worksheet
     workbook = load_workbook(path)
     sheet =  workbook.active
-    
-    #https://www.folkstalk.com/2022/10/how-to-delete-every-row-in-excel-using-openpyxl-with-code-examples.html
+
     # delete everything in the worksheet
     sheet.delete_rows(1, sheet.max_row+1)
     
