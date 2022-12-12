@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title%}
+New Earning
+{% endblock %}
+
+{% block main %}
+<div class="container mt-3">
+    <h1 class="text-left fw-semibold">New earning</h1>
+    <form action="/add_earning" method="post">
+        <div class="row mb-3">
+            <div class="col">
+                <label for="date" class="form-label">Date</label>
+                <input autocomplete="off" class="form-control" id="date" name="date" type="date">
+            </div>
+            <div class="col">
+                <label for="total" class="form-label">Total</label>
+                <input autocomplete="off" class="form-control" id="total" name="total" placeholder="0.00" type="number" step="any" min="0">
+            </div>
+        </div>
+        <div class="row mb-3"> 
+            <div class="col">
+                <label for="source" class="form-label">Source</label>
+                <input autocomplete="off" class="form-control" id="sourc" name="source" placeholder="Source" type="text">
+            </div>
+            <div class="col">
+                <label for="desc" class="form-label">Description/Notes</label>
+                <input autocomplete="off" class="form-control" id="desc" name="desc" placeholder="Description" type="text">
+            </div>
+            
+        </div>
+
+        <button class="btn btn-primary" type="submit">Add</button>
+        <a href="/earnings"><button type="button" class="btn btn-danger">Cancel</button></a>
+    </form>
+</div>
+{% endblock %}

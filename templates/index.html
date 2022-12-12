@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Welcome
+{% endblock %}
+
+{% block main %}
+
+<div class="container-fluid mx-0 px-0">
+    <div class="row align-items-center mx-0">
+        <div class="col text-center">
+            <div class="row">
+                <h1 class="text-left fw-bold">Welcome, {{name}}!</h1>
+            </div>
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4">
+                    <div class="row mt-3 justify-content-center">
+                        <div class="col">
+                            <a href="/members"><button type="button" class="btn btn-primary">Members</button></a>
+                        </div>
+                        <div class="col justify-content-start">
+                            <a href="/board"><button type="button" class="btn btn-primary">Board</button></a>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col">
+                            <a href="/purchases"><button type="button" class="btn btn-primary">Purchases</button></a>
+                        </div>
+                        <div class="col">
+                            <a href="/earnings"><button type="button" class="btn btn-primary">Earnings</button></a>
+                        </div>
+                        
+                        
+                    </div>
+                    <div class="row mt-3">
+                        <a href="/purchases"><button type="button" class="btn btn-primary">Finance Analytics</button></a>
+                    </div>
+                </div>
+                <div class="col-4"></div>
+            </div>
+            
+        </div>
+        <div class="col-6 px-0">
+            <img src="https://yaledailynews.com/wp-content/uploads/2022/11/amoretorno_pv_ContributingPhotographer_PalomaVigil-1024x768.jpg" class="img-fluid" alt="Ballet Folklórico group">
+        </div>
+    </div>
+</div>
+{% endblock %}

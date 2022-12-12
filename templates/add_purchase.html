@@ -23,13 +23,6 @@ New Purchase
             </div>
         </div>
         <div class="row mb-3"> 
-            <div class="col">
-                <label for="covered" class="form-label">Covered</label>
-                <select name="covered" id="covered" class="form-control form-select">
-                    <option selected value="True">Yes</option>
-                    <option value="False">No</option>
-                </select>
-            </div>
         
             <div class="col">
                 <label for="buyer_id" class="form-label">Purchased by</label>
@@ -40,19 +33,12 @@ New Purchase
                     {% endfor %}
                 </select>
             </div>
-            <div class="col">
-                <label for="payment_type" class="form-label">Payment type</label>
-                <input autocomplete="off" class="form-control" id="payment_type" name="payment_type" placeholder="Payment type" type="text">
-            </div>
             <div class="col-6">
                 <label for="desc" class="form-label">Description</label>
                 <input autocomplete="off" class="form-control" id="desc" name="desc" placeholder="Description" type="text">
             </div>
             
         </div>
-
-        <!-- BUTTON TO KEEP ADDING ITEMS TO THE PURCHASE -->
-
 
         <button class="btn btn-primary" type="submit">Add</button>
         <a href="/purchases"><button type="button" class="btn btn-danger">Cancel</button></a>

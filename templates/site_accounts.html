@@ -1,5 +1,21 @@
 {% extends "layout.html" %}
 
+{% block scripts %}
+<script>
+    function confirmMemberDelete() {
+        if (confirm('Are you sure you want to delete this site account?')) {
+            // The user clicked "OK", so return true to indicate that the form should be submitted
+            return true;
+        } else {
+            // The user clicked "Cancel", so return false to prevent the form from being submitted
+            return false;
+        }
+    }
+
+</script>
+{% endblock %}
+
+
 {% block title%}
 Site Accounts
 {% endblock %}
@@ -24,7 +40,7 @@ Site Accounts
                     <td>
                         <form action="/delete_account" method="post">
                             <input name='id' value="{{ account.id }}" hidden>
-                            <button class="btn btn-danger" type="submit">Delete</button>
+                            <button class="btn btn-danger" type="submit" onclick="return confirmMemberDelete()">Delete</button>
                         </form>
                     </td>
                 </tr>

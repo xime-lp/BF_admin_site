@@ -6,8 +6,7 @@
 
 {% block placeholder %}
 <h1 class="mb-3 fw-semibold" id="title">Register</h1>
-<p>*If you're a BF member, you can link your new account with your BF member profile by choosing your name from the dropdown below.
-    <br>Or you can complete this step later
+<p>Choose your name from our members list. If you are not a member, join us before registering.
 </p>
 <div class="text-center mt-5">
     <form action="/register" method="post" class="mb-2">
@@ -26,7 +25,6 @@
         <div class="mb-3">
             <select name="member" id="member" class="form-control mx-auto w-auto form-select">
                 <option disabled selected>BF member</option>
-                <option>Not in list</option>
                 {% for member in members %}
                 <option value="{{ member.id }}">{{ member.name }}</option>
                 {% endfor %}

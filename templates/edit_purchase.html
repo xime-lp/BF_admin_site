@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block title%}
+Edit Purchase
+{% endblock %}
+
+{% block main %}
+<div class="container mt-3">
+    <h1 class="text-left fw-semibold">Edit purchase</h1>
+    <form action="/editing_purchase" method="post">
+        <input name='purchase_id' value="{{ purchase.id }}" hidden>
+        <div class="row mb-3">
+            <div class="col-3">
+                <label for="date" class="form-label">Date</label>
+                <input autocomplete="off" class="form-control" id="date" name="date" type="date" value="{{purchase.date}}">
+            </div>
+            <div class="col-3">
+                <label for="total" class="form-label">Total</label>
+                <input autocomplete="off" class="form-control" id="total" name="total" placeholder="0.00" type="number" step="any" min="0" value="{{purchase.total}}">
+            </div>
+            <div class="col">
+                <label for="vendor" class="form-label">Vendor</label>
+                <input autocomplete="off" class="form-control" id="vendor" name="vendor" placeholder="Vendor" type="text" value="{{purchase.place}}">
+            </div>
+        </div>
+        <div class="row mb-3"> 
+        
+            <div class="col">
+                <label for="buyer_id" class="form-label">Purchased by</label>
+                <select name="buyer_id" id="buyer_id" class="form-control form-select">
+                    <option disabled>Member</option>
+                    {% for member in members %}
+                        {% if member.id == purchase.buyer_id %}
+                            <option value="{{ member.id }}" selected>{{ member.name }}</option>
+                        {% else %}
+                            <option value="{{ member.id }}">{{ member.name }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-6">
+                <label for="desc" class="form-label">Description</label>
+                <input autocomplete="off" class="form-control" id="desc" name="desc" placeholder="Description" type="text" value="{{purchase.value}}">
+            </div>
+            
+        </div>
+        <button class="btn btn-primary" type="submit">Save</button>
+        <a href="/purchases"><button type="button" class="btn btn-danger">Cancel</button></a>
+    </form>
+</div>
+{% endblock %}

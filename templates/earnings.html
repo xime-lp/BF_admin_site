@@ -1,6 +1,5 @@
 {% extends "layout.html" %}
 
-
 {% block scripts %}
 <script>
     function confirmMemberDelete() {
@@ -16,21 +15,21 @@
 </script>
 {% endblock %}
 
+
 {% block title%}
 Purchases
 {% endblock %}
 
 {% block main %}
 <div class="container mt-3">
-    <h1 class="text-left fw-semibold">Purchases</h1>
+    <h1 class="text-left fw-semibold">Earnings</h1>
     <div class="table-responsive">
         <table class="table table-striped" aria-label="member table">
             <thead>
                 <tr>
                     <th scope="col">Date</th>
                     <th scope="col">Total</th>
-                    <th scope="col">Vendor</th>
-                    <th scope="col">Bought by</th>
+                    <th scope="col">Source</th>
                     <th scope="col">Registered by</th>
                     <th scope="col">Description</th>
                     <th scope="col"></th>
@@ -38,23 +37,22 @@ Purchases
                 </tr>
             </thead>
             <tbody>
-                {% for purchase in purchases %}
+                {% for earning in earnings %}
                 <tr>
-                    <td>{{ purchase.date }}</td>
-                    <td>{{ purchase.total }}</td>
-                    <td>{{ purchase.place }}</td>
-                    <td>{{ purchase.buyer }}</td>
-                    <td>{{ purchase.member }}</td>
-                    <td>{{ purchase.description }}</td>
+                    <td>{{ earning.date }}</td>
+                    <td>{{ earning.total }}</td>
+                    <td>{{ earning.source }}</td>
+                    <td>{{ earning.registree }}</td>
+                    <td>{{ earning.notes }}</td>
                     <td>
-                        <form action="/edit_purchase" method="post">
-                            <input name='id' value="{{ purchase.id }}" hidden>
+                        <form action="/edit_earning" method="post">
+                            <input name='earning_id' value="{{ earning.id }}" hidden>
                             <button class="btn btn-primary" type="submit">Edit</button>
                         </form>
                     </td>
                     <td>
-                        <form action="/delete_purchase" method="post">
-                            <input name='id' value="{{ purchase.id}}" hidden>
+                        <form action="/delete_earning" method="post">
+                            <input name='earning_id' value="{{ earning.id}}" hidden>
                             <button class="btn btn-danger" type="submit" onclick="return confirmMemberDelete()">Delete</button>
                         </form>
                     </td>
@@ -63,7 +61,7 @@ Purchases
             </tbody>
         </table>
     </div>
-    <a href="/add_purchase"><button class="btn btn-primary" type="submit">Add Purchase</button></a>
+    <a href="/add_earning"><button class="btn btn-primary">Add Earning</button></a>
 </div>
 
 

@@ -1,5 +1,20 @@
 {% extends "layout.html" %}
 
+{% block scripts %}
+<script>
+    function confirmMemberDelete() {
+        if (confirm('Are you sure you want to delete this board member?')) {
+            // The user clicked "OK", so return true to indicate that the form should be submitted
+            return true;
+        } else {
+            // The user clicked "Cancel", so return false to prevent the form from being submitted
+            return false;
+        }
+    }
+
+</script>
+{% endblock %}
+
 {% block title%}
 Board
 {% endblock %}
@@ -31,7 +46,7 @@ Board
                     <td>
                         <form action="/delete_board" method="post">
                             <input name='member_id' value="{{ member.member_id }}" hidden>
-                            <button class="btn btn-danger" type="submit">Delete</button>
+                            <button class="btn btn-danger" type="submit" onclick="return confirmMemberDelete()">Delete</button>
                         </form>
                     </td>
                 </tr>

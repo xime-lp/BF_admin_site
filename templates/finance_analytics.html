@@ -4,8 +4,49 @@
 TESTING
 {% endblock %}
 
+{% block scripts%}
+    <link rel="stylesheet" href="https://cdn.bokeh.org/bokeh/release/bokeh-3.0.0.min.css" type="text/css" />
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-3.0.0.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        Bokeh.set_log_level("info");
+    </script>
+    {{ earnings_script|indent(4)|safe }}
+    {{ purchases_script|indent(4)|safe }}
+{% endblock %}
+
 {% block main %}
-<body class="container mt-3">
-     <a href="/return-files/" target="blank"><button class='btn btn-primary'>Download!</button></a>
- </body>
+<div class="container mt-3">
+    <h1 class="text-left fw-semibold">Finance Analytics</h1>
+    <div class="row">
+        <div class="col">
+            {{ earnings_plot|indent(4)|safe }}
+        </div>
+        <div class="col">
+            {{ purchases_plot|indent(4)|safe }}
+        </div>
+    </div>
+    
+    
+</div>
+
+<div class="container mt-3">
+    <h3 class="text-left fw-semibold">Download Excel file</h3>
+    <form action="/return_excel" method="post">
+        <div class="row mb-3">
+            <div class="col">
+                <label for="date" class="form-label">Start date</label>
+                <input autocomplete="off" class="form-control" id="start_date" name="start_date" type="date">
+            </div>
+            <div class="col">
+                <label for="date" class="form-label">End date</label>
+                <input autocomplete="off" class="form-control" id="end_date" name="end_date" type="date">
+            </div>
+            </div>
+            
+            <button class='btn btn-primary' type='submit'>Download!</button>
+        </div>
+            
+    </form>
+</div>
+
 {% endblock %}
