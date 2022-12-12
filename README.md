@@ -5,7 +5,8 @@ BF Admin Site is a website made for Ballet Folklórico Mexicano de Yale to easil
 Usage video found [here](https://youtu.be/zS9xF2WrLho)
 
 ## Initialization
-Download the zip file and unzip its contents.
+#### On your computer
+Download the zip file 'project.zip' and unzip its contents.
 Navigate to the unzipped file using the command terminal. It should show something similar to this:
 ```bash
 .../BF_admin_site $
@@ -20,6 +21,12 @@ The output should include the following line:
 ```
 
 Copy the http address and access it in a browser (ex. Google Chrome, Safari, etc.)
+
+> **_NOTE:_**  The program requires Python and the following libraries: [Flask](https://flask.palletsprojects.com/en/2.2.x/installation/), [CS50 Library for Python](https://cs50.readthedocs.io/libraries/cs50/python/), [Werkzeug](https://werkzeug.palletsprojects.com/en/2.2.x/installation/), [Openpyxl](https://pypi.org/project/openpyxl/) and, [Bokeh](https://docs.bokeh.org/en/latest/docs/first_steps/installation.html). Ensure they are installed and updated.
+
+#### Online
+* Currently working on launching the application online
+
 
 ## Registering for an account
 You will need an account to access the functionalities of the website.
